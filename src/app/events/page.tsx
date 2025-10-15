@@ -38,7 +38,7 @@ export default function Event() {
                 <label className="text-lg font-semibold font-serif text-gray-800 mb-2">
                   Category
                 </label>
-                <select className="p-3 border border-gray-300 text-gray-800 mb-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <select className="p-3 border border-gray-300 text-gray-800 mb-2 shadow-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
                   <option>Select Category</option>
                   <option>Musik</option>
                   <option>Teknologi</option>
@@ -50,7 +50,7 @@ export default function Event() {
                 <label className="text-lg font-semibold font-serif text-gray-800 mb-2">
                   Location
                 </label>
-                <select className="p-3 border border-gray-300 text-gray-800 mb-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <select className="p-3 border border-gray-300 text-gray-800 mb-2 shadow-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
                   <option>Select Location</option>
                   <option>Jakarta</option>
                   <option>Bandung</option>
@@ -62,7 +62,7 @@ export default function Event() {
                 <label className="text-lg font-semibold font-serif text-gray-800 mb-2">
                   Price
                 </label>
-                <select className="p-3 border border-gray-300 text-gray-800 mb-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <select className="p-3 border border-gray-300 text-gray-800 mb-2 shadow-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
                   <option>Select Price</option>
                   <option>Gratis</option>
                   <option>&lt; Rp50.000</option>

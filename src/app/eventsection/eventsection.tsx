@@ -47,7 +47,7 @@ export default function EventSection() {
   ];
 
   return (
-    <section className="p-6 bg-gray-50 min-h-screen">
+    <section className="p-6 bg-white min-h-screen">
       <h2 className="text-lg font-bold font-serif text-gray-700 mb-4">
         Menampilkan {events.length} event
       </h2>
@@ -56,7 +56,7 @@ export default function EventSection() {
         {events.map((event, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+            className="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
           >
             <div className="relative w-full h-52">
               <Image
