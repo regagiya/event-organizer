@@ -12,10 +12,10 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 p-6">
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-gray-800 p-6">
       <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 max-w-md w-full border border-white/20">
         <h1 className="text-3xl font-bold text-white font-serif text-center mb-6 tracking-wide">
-          Welcome Back 👋
+          Welcome To Zeuss. 👋
         </h1>
         <p className="text-center font-serif text-white/80 mb-8 text-sm">
           Please log in to access your account
