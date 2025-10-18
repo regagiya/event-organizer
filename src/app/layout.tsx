@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Rethink_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/component/navbar/navbar";
 import Footer from "@/component/footer/footer";
@@ -13,6 +13,11 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const rethinkSans = Rethink_Sans({
+  variable: "--font-rethink-sans",
+  subsets: ["latin"]
+})
 
 export const metadata: Metadata = {
   title: "Zeuss Event",
@@ -29,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${rethinkSans.variable} antialiased`}
       >
         <Navbar />
         {children}
