@@ -7,7 +7,7 @@ export default function EventSection() {
   const events = [
     {
       title: "Tech Conference Jakarta 2024",
-      organizer: "TechEvents Indonesia",
+      organizer: "Zeuss.",
       description:
         "Join the biggest tech conference in Jakarta featuring industry leaders and innovators.",
       date: "15 Des 2024, 09.00",
@@ -20,11 +20,11 @@ export default function EventSection() {
     },
     {
       title: "Music Festival Bandung",
-      organizer: "Bandung Music Events",
+      organizer: "Zeuss.",
       description:
         "Experience the best local and international artists in this amazing music festival.",
       date: "20 Des 2024, 18.00",
-      location: "Bandung Creative Hub",
+      location: "Zeuss",
       seats: "500 dari 1000 kursi tersedia",
       category: "Music",
       price: "Rp 300.000",
@@ -33,7 +33,7 @@ export default function EventSection() {
     },
     {
       title: "Startup Networking Meetup",
-      organizer: "Startup Community",
+      organizer: "Zeuss.",
       description:
         "Connect with fellow entrepreneurs and investors in this exclusive networking event.",
       date: "10 Des 2024, 19.00",
@@ -43,6 +43,43 @@ export default function EventSection() {
       price: "Gratis",
       rating: 4.2,
       image: "public/bussines.jpeg",
+    },
+    {
+      title: "Djakarta Warehouse Project",
+      organizer: "Zeuss.",
+      description:
+        "Experience the best local and international artists in this amazing music festival.",
+      date: "20 Des 2024, 18.00",
+      location: "Gelora Bung Karno",
+      seats: "100 dari 1000 kursi tersedia",
+      category: "Music",
+      price: "Rp 3.000.000",
+      rating: 5,
+      image: "dwp.jpeg",
+    },
+    {
+      title: "Oriflame Launching New Product",
+      organizer: "Zeuss.",
+      description: "Launching New Perfume for Family",
+      date: "20 Mei 2025, 18.00",
+      location: "Hotel Mulia Senayan",
+      seats: "50 dari 1000 kursi tersedia",
+      category: "Exibition",
+      price: "Rp 300.000",
+      rating: 4.8,
+      image: "oriflame.jpeg",
+    },
+    {
+      title: "IMX",
+      organizer: "Zeuss. X NMAA",
+      description: "The Bigger Modification Expo in Indonesia",
+      date: "10 agustus 2025, 10.00",
+      location: "ICE bsd",
+      seats: "5000 dari 10.000 kursi tersedia",
+      category: "Automotive",
+      price: "Rp 100.000",
+      rating: 4.8,
+      image: "imx.jpeg",
     },
   ];
 
