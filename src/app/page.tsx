@@ -1,3 +1,5 @@
+import UpcomingEvents from "./eventsection/upcoming";
+
 export default function Home() {
   return (
     <main className="font-rethink">
@@ -20,7 +22,9 @@ export default function Home() {
             We Don't Just Plan Events — We Create Experiences!
           </p>
         </div>
+        <div className="text-4xl font-serif font-bold text-center"></div>
       </div>
+      <UpcomingEvents />
     </main>
   );
 }
