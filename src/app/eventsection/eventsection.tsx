@@ -1,91 +1,46 @@
 "use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
-// Komponen utama (gabungan EventCard + EventGrid)
+interface EventType {
+  id?: string;
+  organizerId: string;
+  name: string;
+  description: string;
+  category: string;
+  location: string;
+  city?: string;
+  address?: string;
+  startDate: string;
+  endDate?: string;
+  price: string | number;
+  availableSeats?: number;
+  totalSeats?: number;
+  imageUrl: string;
+}
+
 export default function EventSection() {
-  // Data event (bisa diganti dari API)
-  const events = [
-    {
-      title: "Tech Conference Jakarta 2024",
-      organizer: "Zeuss.",
-      description:
-        "Join the biggest tech conference in Jakarta featuring industry leaders and innovators.",
-      date: "15 Des 2024, 09.00",
-      location: "Jakarta Convention Center",
-      seats: "150 dari 200 kursi tersedia",
-      category: "Technology",
-      price: "Rp 500.000",
-      rating: 4.5,
-      image: "public/technology.jpg",
-    },
-    {
-      title: "Music Festival Bandung",
-      organizer: "Zeuss.",
-      description:
-        "Experience the best local and international artists in this amazing music festival.",
-      date: "20 Des 2024, 18.00",
-      location: "Zeuss",
-      seats: "500 dari 1000 kursi tersedia",
-      category: "Music",
-      price: "Rp 300.000",
-      rating: 4.8,
-      image: "public/music.jpeg",
-    },
-    {
-      title: "Startup Networking Meetup",
-      organizer: "Zeuss.",
-      description:
-        "Connect with fellow entrepreneurs and investors in this exclusive networking event.",
-      date: "10 Des 2024, 19.00",
-      location: "Surabaya Co-working Space",
-      seats: "80 dari 100 kursi tersedia",
-      category: "Business",
-      price: "Gratis",
-      rating: 4.2,
-      image: "public/bussines.jpeg",
-    },
-    {
-      title: "Djakarta Warehouse Project",
-      organizer: "Zeuss.",
-      description:
-        "Experience the best local and international artists in this amazing music festival.",
-      date: "20 Des 2024, 18.00",
-      location: "Gelora Bung Karno",
-      seats: "100 dari 1000 kursi tersedia",
-      category: "Music",
-      price: "Rp 3.000.000",
-      rating: 5,
-      image: "dwp.jpeg",
-    },
-    {
-      title: "Oriflame Launching New Product",
-      organizer: "Zeuss.",
-      description: "Launching New Perfume for Family",
-      date: "20 Mei 2025, 18.00",
-      location: "Hotel Mulia Senayan",
-      seats: "50 dari 1000 kursi tersedia",
-      category: "Exibition",
-      price: "Rp 300.000",
-      rating: 4.8,
-      image: "oriflame.jpeg",
-    },
-    {
-      title: "IMX",
-      organizer: "Zeuss. X NMAA",
-      description: "The Bigger Modification Expo in Indonesia",
-      date: "10 agustus 2025, 10.00",
-      location: "ICE bsd",
-      seats: "5000 dari 10.000 kursi tersedia",
-      category: "Automotive",
-      price: "Rp 100.000",
-      rating: 4.8,
-      image: "imx.jpeg",
-    },
-  ];
+  const [events, setEvents] = useState<EventType[]>([]);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch("http://localhost:8099/event/events");
+        console.log(res);
+        const json = await res.json();
+        console.log(`ini console custom2 ${json}`);
+        setEvents(json.data);
+      } catch (error) {
+        console.error("Failed to load events:", error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   return (
-    <section className="p-6 bg-white min-h-screen">
-      <h2 className="text-lg font-bold font-serif text-gray-700 mb-4">
+    <section className="p-6 bg-white min-h-screen font-rethink">
+      <h2 className="text-lg font-bold  text-gray-700 mb-4">
         Menampilkan {events.length} event
       </h2>
 
@@ -96,12 +51,12 @@ export default function EventSection() {
             className="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
           >
             <div className="relative w-full h-52">
-              <Image
-                src="/technology.png"
-                alt={event.title}
+              {/* <Image
+                src={event.imageUrl ? event.imageUrl : "/fallback.jpg"}
+                alt={event.name}
                 fill
                 className="object-cover"
-              />
+              /> */}
               <span className="absolute top-3 left-3 bg-black/70 text-white text-sm font-semibold px-3 py-1 rounded-full">
                 {event.price}
               </span>
@@ -109,28 +64,10 @@ export default function EventSection() {
 
             <div className="p-5">
               <h3 className="text-l text-gray-600 font-serif font-semibold mb-1">
-                {event.title}
+                {event.name}
               </h3>
-              <p className="text-gray-500 font-serif text-sm mb-3">
-                {event.organizer}
-              </p>
-              <p className="text-gray-600 font-serif text-sm mb-4 line-clamp-2">
-                {event.description}
-              </p>
-
-              <div className="text-sm text-gray-600 font-serif space-y-2 mb-3">
-                <p>📅 {event.date}</p>
-                <p>📍 {event.location}</p>
-                <p>👥 {event.seats}</p>
-              </div>
-
-              <span className="inline-block bg-gray-200 text-gray-700 font-serif text-sm font-medium px-3 py-1 rounded-full mb-4">
-                {event.category}
-              </span>
-
-              <button className="w-full bg-blue-900 text-white py-2 font-serif rounded-lg hover:bg-blue-800 transition">
-                Lihat Detail
-              </button>
+              <p className="text-gray-500 text-sm mb-3">{event.description}</p>
+              <p className="text-sm text-gray-600  mb-3">📍 {event.location}</p>
             </div>
           </div>
         ))}
