@@ -18,13 +18,39 @@ export default function LoginPage() {
           Welcome To Zeuss
         </h1>
         <p className="text-center text-white/80 mb-8 text-sm">
-          Please log in to access your account
+          Create new account
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="block text-white text-sm mb-2">
+              Username
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="youremail@example.com"
+              required
+              className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+            />
+          </div>
+
+          <div>
+            <label className="block text-white text-sm mb-2">
               Email Address
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="youremail@example.com"
+              required
+              className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+            />
+          </div>
+        
+        <div>
+            <label className="block text-white text-sm mb-2">
+              Role
             </label>
             <input
               type="email"
@@ -66,9 +92,9 @@ export default function LoginPage() {
         </form>
 
         <p className="text-center text-white/70 mt-6 text-sm">
-          Don`t have an account?{" "}
-          <a href="/register" className="text-white font-semibold cursor-pointer hover:underline">
-            Register
+          Already have an account?{" "}
+          <a href="/login" className="text-white font-semibold cursor-pointer hover:underline">
+            Login
           </a>
         </p>
       </div>
