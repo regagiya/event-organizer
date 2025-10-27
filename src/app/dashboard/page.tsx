@@ -5,7 +5,7 @@ export default function Dashboard(){
                 <section className="">
                     <h1 className="font-semibold mb-5 text-lg opacity-60">DASHBOARD</h1>
                     <div className="ml-10 flex flex-col gap-10 text-lg">
-                        <a>Events</a>
+                        <a className="underline-animate">Events</a>
                         
                         <a>Statistics</a>
                         <a>Notification</a>
