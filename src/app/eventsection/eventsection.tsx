@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+//import Image from "next/image";
 
 interface EventType {
   id?: string;
@@ -51,13 +52,15 @@ export default function EventSection() {
             className="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
           >
             <div className="relative w-full h-52">
-              {/* <Image
-                src={event.imageUrl ? event.imageUrl : "/fallback.jpg"}
-                alt={event.name}
-                fill
-                className="object-cover"
-              /> */}
-              <span className="absolute top-3 left-3 bg-black/70 text-white text-sm font-semibold px-3 py-1 rounded-full">
+              {
+                <Image
+                  src={event.imageUrl ? event.imageUrl : "/fallback.jpg"}
+                  alt={event.name}
+                  fill
+                  className="object-cover"
+                />
+              }
+              <span className="absolute top-3 left-3 bg-black/70 text-white text-sm font-semibold px-3 py-1 rounded-2xl">
                 {event.price}
               </span>
             </div>
