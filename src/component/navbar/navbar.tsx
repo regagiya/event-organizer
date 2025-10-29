@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
@@ -14,6 +14,47 @@ export default function Navbar() {
     { name: "Contact", href: "/contact-me" },
     { name: "Log in", href: "/login" },
   ];
+
+  interface User {
+  username: string;
+  email: string;
+  role:string;
+}
+
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      try {
+        const res = await fetch("http://localhost:8099/auth/me", {
+          credentials: "include", // biar dapet cookie
+        });
+        // if (!res.ok) throw new Error("Not logged in");
+
+        const data = await res.json();
+        console.log(data)
+        setUser(data.user);
+      } catch (err) {
+        setUser(null); // token tidak valid atau belum login
+      }
+    };
+
+    checkLogin();
+  }, []);
+
+  const handleLogout = async () => {
+    const res = await fetch("http://localhost:8099/auth/logout", {
+      method: "POST",
+      credentials: "include",
+    });
+    const data = res.json()
+    console.log(data)
+    if(res.ok){
+      setUser(null);
+      alert("berhasil logout")
+    }
+    
+  };
 
   return (
     <nav className="font-rethink fixed top-0 left-0 w-full z-50 bg-gray-900 backdrop-blur-md shadow-sm">
@@ -43,8 +84,22 @@ export default function Navbar() {
         >
           {open ? <X size={28} /> : <Menu size={28} />}
         </button>
+        {
+          user ? 
+          <div className="flex gap-5">
+            <span>{user.username}</span>
+            <button
+              onClick={handleLogout}
+              className="hover:bg-white/20"
+            >Logout
+            </button> 
+          </div>
+            
+          : 
+          <p>lu belum login bangsat</p>
+        }
       </div>
-
+      
       {open && (
         <div className="md:hidden bg-white shadow-md">
           {navLinks.map((link) => (

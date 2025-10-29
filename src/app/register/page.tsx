@@ -3,12 +3,53 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [formData,setFormData] = useState({
+    username: "",
+    email:"",
+    password:"",
+    role:"CUSTOMER",
+    referralCode:""
+  })
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert("Logged in successfully (demo only)");
+
+    try{
+      const res = await fetch("http://localhost:8099/auth/register",{
+        method:"POST",
+        headers:{"content-type":"application/json"},
+        body: JSON.stringify(formData)
+      }) 
+      if(!res.ok){
+        const errorData = await res.json()
+        alert(errorData.message || "General Register Error")
+      }else{
+        alert("Register Success")
+        setFormData(
+          {
+            username: "",
+            email:"",
+            password:"",
+            role:"CUSTOMER",
+            referralCode:""
+          }
+        )
+      }
+
+    }catch(error){
+      console.error("Error: ",error)
+      alert("Server error")
+    }
   };
 
   return (
@@ -27,8 +68,10 @@ export default function LoginPage() {
               Username
             </label>
             <input
-              type="email"
-              name="email"
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
               placeholder="youremail@example.com"
               required
               className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-indigo-600"
@@ -42,6 +85,8 @@ export default function LoginPage() {
             <input
               type="email"
               name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="youremail@example.com"
               required
               className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-indigo-600"
@@ -53,8 +98,10 @@ export default function LoginPage() {
               Role
             </label>
             <input
-              type="email"
-              name="email"
+              type="text"
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
               placeholder="youremail@example.com"
               required
               className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-indigo-600"
@@ -69,6 +116,8 @@ export default function LoginPage() {
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
+                value={formData.password}
+                onChange={handleChange}
                 placeholder="Enter your password"
                 required
                 className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-indigo-600"
@@ -83,11 +132,25 @@ export default function LoginPage() {
             </div>
           </div>
 
+          <div>
+            <label className="block text-white text-sm mb-2">
+              Referral Code (optional)
+            </label>
+            <input
+              type="text"
+              name="referralCode"
+              value={formData.referralCode}
+              onChange={handleChange}
+              placeholder="youremail@example.com"
+              className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+            />
+          </div>
+
           <button
             type="submit"
             className="w-full bg-indigo-600 text-white font-semibold py-3 rounded-lg shadow-lg hover:opacity-90 transition"
           >
-            Log In
+            Register
           </button>
         </form>
 
