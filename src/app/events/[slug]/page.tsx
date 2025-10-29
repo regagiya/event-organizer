@@ -210,7 +210,7 @@ export default async function Page({ params }: { params: Params }) {
                   #{event.category ?? "general"}
                 </span>
                 <span className="text-xs bg-white/8 text-white/90 px-3 py-1 rounded-full">
-                  📍 {event.city ?? event.location ?? "-"}
+                  {event.city ?? event.location ?? "-"}
                 </span>
                 <span className="text-xs bg-white/8 text-white/90 px-3 py-1 rounded-full">
                   Seats: {event.availableSeats ?? 0}/{event.totalSeats ?? 0}
@@ -222,7 +222,7 @@ export default async function Page({ params }: { params: Params }) {
                 <div>Posted: {new Date().toLocaleDateString()}</div>
                 <div className="mt-2">
                   Need help?{" "}
-                  <a href="mailto:support@example.com" className="underline">
+                  <a href="regagiya@gmail.com" className="underline">
                     Contact support
                   </a>
                 </div>

@@ -11,7 +11,7 @@ import {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-indigo-50 to-white flex flex-col items-center justify-center px-6 py-12">
+    <main className="min-h-screen bg-[#071029] flex flex-col items-center justify-center px-6 py-12">
       <div className="max-w-4xl w-full bg-white/80 rounded-3xl shadow-2xl overflow-hidden grid md:grid-cols-2">
         {/* Left Section */}
         <div className="bg-indigo-600 text-white font-serif flex flex-col justify-center p-10">
