@@ -12,7 +12,7 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="font-rethink min-h-screen flex items-center justify-center bg-black p-6">
+    <main className="font-rethink min-h-screen flex items-center justify-center  bg-[#071029] p-6">
       <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 max-w-md w-full border border-white/20">
         <h1 className="text-3xl font-bold text-white  text-center mb-6 tracking-wide">
           Welcome To Zeuss
@@ -36,9 +36,7 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label className="block text-white  text-sm mb-2">
-              Password
-            </label>
+            <label className="block text-white  text-sm mb-2">Password</label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
@@ -67,7 +65,10 @@ export default function LoginPage() {
 
         <p className="text-center text-white/70 mt-6 text-sm">
           Don`t have an account?{" "}
-          <a href="/register" className="text-white font-semibold cursor-pointer hover:underline">
+          <a
+            href="/register"
+            className="text-white font-semibold cursor-pointer hover:underline"
+          >
             Register
           </a>
         </p>

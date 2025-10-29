@@ -4,13 +4,13 @@ import Image from "next/image";
 
 export default function AboutUs() {
   return (
-    <main className="bg-gradient-to-b from-indigo-50 to-white text-gray-800 min-h-screen pt-24 pb-16">
+    <main className="bg-[#071029] text-gray-800 min-h-screen pt-24 pb-16">
       {/* Hero Section */}
       <section className="max-w-6xl mx-auto text-center px-6">
         <h1 className="text-5xl md:text-6xl font-extrabold text-indigo-700 mb-4 font-serif">
-          About <span className="text-gray-900">Zeuss Event Organizer</span>
+          About <span className="text-white/90">Zeuss Event Organizer</span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-serif leading-relaxed">
+        <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto font-serif leading-relaxed">
           Zeuss Event Organizer has been a pioneer in the event management
           industry in Indonesia since 2015. We deliver exceptional experiences
           through meticulous planning, high creativity, and full dedication to
@@ -24,13 +24,13 @@ export default function AboutUs() {
           <h2 className="text-3xl font-serif font-bold text-indigo-700 mb-4">
             Our Journey
           </h2>
-          <p className="text-gray-700 font-serif leading-relaxed mb-4">
+          <p className="text-white/90 font-serif leading-relaxed mb-4">
             Starting as a small, passionate team, Zeuss has now become one of
             Indonesia`s leading event organizers. We have handled various
             large-scale events, from music concerts and international seminars
             to cultural festivals and high-profile product launches.
           </p>
-          <p className="text-gray-700 font-serif leading-relaxed">
+          <p className="text-white/90 font-serif leading-relaxed">
             With More Than{" "}
             <span className="font-semibold font-serif">
               500 successful events
