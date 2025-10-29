@@ -2,13 +2,48 @@
 
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-
+import cookieParser from "cookie-parser";
+ 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    email:"",
+    password:""
+  })
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert("Logged in successfully (demo only)");
+
+    try{
+      const res = await fetch("http://localhost:8099/auth/login",{
+        method:"POST",
+        headers:{"content-type":"application/json"},
+        body:JSON.stringify(formData),
+        credentials:"include" //biar cookienya masuk
+      })
+      if(!res.ok){
+        const errorData = await res.json()
+        alert(errorData.message || "General Login Error")
+      }else{
+        alert("Login Success")
+        setFormData({
+          email:"",
+          password:""
+        })
+      }
+
+    }catch(error){
+      console.error(error);
+      alert("Server Error")
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   return (
@@ -29,6 +64,8 @@ export default function LoginPage() {
             <input
               type="email"
               name="email"
+              onChange={handleChange}
+              value={formData.email}
               placeholder="youremail@example.com"
               required
               className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-indigo-600"
@@ -43,6 +80,8 @@ export default function LoginPage() {
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
+                onChange={handleChange}
+                value={formData.password}
                 placeholder="Enter your password"
                 required
                 className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-indigo-600"
